@@ -5,7 +5,7 @@ from forms.serializers import FormSerializer
 from rest_framework.decorators import action
 
 
-class FormsAPIView(viewsets.ModelViewSet):
+class FormsAPIView(viewsets.GenericViewSet):
     queryset = Form.objects.all() 
     serializer_class = FormSerializer
 
@@ -21,7 +21,7 @@ class FormsAPIView(viewsets.ModelViewSet):
         if set(long_form).issubset(keys_data_in):
             return Response({'form_name': 'LongForm'})
         if set(middle_form).issubset(keys_data_in):
-            return Response({'form_name': 'MiddleForm'})
+            return Response({'form_name': 'MediumForm'})
         if set(short_form).issubset(keys_data_in):
             return Response({'form_name': 'ShortForm'})
         return Response({'form_name': 'Unknown'})
